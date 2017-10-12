@@ -78,7 +78,7 @@ set list                                                     " show trailing whi
 set listchars=tab:▸\ ,trail:▫
 set number                                                   " show line numbers
 set ruler                                                    " show where you are
-set scrolloff=3                                              " show context above/below cursorline
+set scrolloff=4                                              " show context above/below cursorline
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
 set showcmd
 set smartcase                                                " case-sensitive search if any caps
@@ -87,6 +87,11 @@ set tabstop=8                                                " actual tabs occup
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
+set nocursorcolumn                                           " do not highlight column
+set nocursorline                                             " do not highlight line
+syntax sync minlines=256                                     " start highlighting from 256 lines backwards
+set synmaxcol=300                                            " do not highlith very long lines
+set re=1                                                     " use explicit old regexpengine, seems to be more faster
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -181,7 +186,6 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-
 " Set filetype recognition for filetypes not recognized
 autocmd BufNewFile,BufRead .babelrc set filetype=json
 autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
@@ -252,4 +256,32 @@ set cursorline
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 Plug 'janko-m/vim-test'
+Plug 'mhinz/vim-startify'
 call plug#end()
+
+" SPLASH!
+" let g:startify_custom_header = [
+"       \'  ▄████ ▒██   ██▒▓█████   ██████  ██▓███   ██▓ ███▄    █  ▒█████  ',
+"       \' ██▒ ▀█▒▒▒ █ █ ▒░▓█   ▀ ▒██    ▒ ▓██░  ██▒▓██▒ ██ ▀█   █ ▒██▒  ██▒',
+"       \'▒██░▄▄▄░░░  █   ░▒███   ░ ▓██▄   ▓██░ ██▓▒▒██▒▓██  ▀█ ██▒▒██░  ██▒',
+"       \'░▓█  ██▓ ░ █ █ ▒ ▒▓█  ▄   ▒   ██▒▒██▄█▓▒ ▒░██░▓██▒  ▐▌██▒▒██   ██░',
+"       \'░▒▓███▀▒▒██▒ ▒██▒░▒████▒▒██████▒▒▒██▒ ░  ░░██░▒██░   ▓██░░ ████▓▒░',
+"       \' ░▒   ▒ ▒▒ ░ ░▓ ░░░ ▒░ ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░░▓  ░ ▒░   ▒ ▒ ░ ▒░▒░▒░ ',
+"       \'  ░   ░ ░░   ░▒ ░ ░ ░  ░░ ░▒  ░ ░░▒ ░      ▒ ░░ ░░   ░ ▒░  ░ ▒ ▒░ ',
+"       \'░ ░   ░  ░    ░     ░   ░  ░  ░  ░░        ▒ ░   ░   ░ ░ ░ ░ ░ ▒  ',
+"       \'      ░  ░    ░     ░  ░      ░            ░           ░     ░ ░  ',
+"       \]
+
+let g:startify_custom_header = [
+      \'      ___           ___           ___           ___           ___                     ___           ___     ',
+      \'     /  /\         /__/|         /  /\         /  /\         /  /\      ___          /__/\         /  /\    ',
+      \'    /  /:/_       |  |:|        /  /:/_       /  /:/_       /  /::\    /  /\         \  \:\       /  /::\   ',
+      \'   /  /:/ /\      |  |:|       /  /:/ /\     /  /:/ /\     /  /:/\:\  /  /:/          \  \:\     /  /:/\:\  ',
+      \'  /  /:/_/::\   __|__|:|      /  /:/ /:/_   /  /:/ /::\   /  /:/~/:/ /__/::\      _____\__\:\   /  /:/  \:\ ',
+      \' /__/:/__\/\:\ /__/::::\____ /__/:/ /:/ /\ /__/:/ /:/\:\ /__/:/ /:/  \__\/\:\__  /__/::::::::\ /__/:/ \__\:\',
+      \' \  \:\ /~~/:/    ~\~~\::::/ \  \:\/:/ /:/ \  \:\/:/~/:/ \  \:\/:/      \  \:\/\ \  \:\~~\~~\/ \  \:\ /  /:/',
+      \'  \  \:\  /:/      |~~|:|~~   \  \::/ /:/   \  \::/ /:/   \  \::/        \__\::/  \  \:\  ~~~   \  \:\  /:/ ',
+      \'   \  \:\/:/       |  |:|      \  \:\/:/     \__\/ /:/     \  \:\        /__/:/    \  \:\        \  \:\/:/  ',
+      \'    \  \::/        |  |:|       \  \::/        /__/:/       \  \:\       \__\/      \  \:\        \  \::/   ',
+      \'     \__\/         |__|/         \__\/         \__\/         \__\/                   \__\/         \__\/    ',
+      \]
