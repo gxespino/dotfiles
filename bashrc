@@ -14,8 +14,7 @@ export HTTPS_PROXY="http://preproxy.uscis.dhs.gov:80"
 export NO_PROXY="uscis.dhs.gov,localhost,.localdomain,127.0.0.1"
 export ALL_PROXY=https://el2-dt-preproxy.uscis.dhs.gov:80/
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
-
-export USCIS_HOME=~/Desktop/Workspace/Enrollments
+export USCIS_HOME=/Users/gespino/Desktop/Workspace/Enrollments
 
 # VIS Enrollment API Variables
 export cluster_env=LOCAL

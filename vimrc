@@ -198,9 +198,34 @@ autocmd BufNewFile,BufRead .tern-project set filetype=json
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
 set runtimepath^=~/.vim/bundle/html-improved/html.vim
+set splitright
 
 "==============================================================
-"vimrc.local
+" Vim Test w/ Docker (Override to open in right panel)
+"==============================================================
+function! test#strategy#neovim(cmd) abort
+  vertical new
+  call termopen(a:cmd)
+  au BufDelete <buffer> wincmd p " switch back to last window
+  startinsert
+endfunction
+
+function! DockerTransform(cmd) abort
+  let container_path_list = split(getcwd(), '/')
+  let container_name = container_path_list[-1]
+
+  return 'docker exec -it ' . container_name . ' ' .a:cmd
+endfunction
+
+let g:test#strategy = "neovim"
+let g:test#custom_transformations = { 'docker': function('DockerTransform') }
+let g:test#transformation = 'docker'
+
+" Custom test executables
+let test#ruby#rspec#executable = 'rspec'
+
+"==============================================================
+" vimrc.local
 "==============================================================
 set nocursorline " don't highlight current line
 
@@ -245,6 +270,9 @@ function! s:RemoveConflictingAlignMaps()
 endfunction
 command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
 silent! autocmd VimEnter * RemoveConflictingAlignMaps
+
+" Don't open new AG searches automatically
+ca Ag Ag!
 
 nnoremap <leader>2 :vert sb<CR>
 "set cursorline

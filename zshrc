@@ -12,6 +12,7 @@ source $ZSH/oh-my-zsh.sh
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export USCIS_HOME=/Users/gespino/Desktop/Workspace/Enrollments
 
 set nobackup set noswapfile
 set term=xterm-256color
@@ -92,3 +93,6 @@ export no_proxy="uscis.dhs.gov,localhost,.localdomain,127.0.0.1"
 export HTTP_PROXY="http://preproxy.uscis.dhs.gov:80"
 export HTTPS_PROXY="http://preproxy.uscis.dhs.gov:80"
 export NO_PROXY="uscis.dhs.gov,localhost,.localdomain,127.0.0.1"
+
+
+eval "$(_TMUXP_COMPLETE=source tmuxp)"
