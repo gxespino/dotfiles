@@ -1,25 +1,21 @@
-export ZSH=/Users/gpespn/.oh-my-zsh
+export ZSH=.oh-my-zsh
 
 ZSH_THEME=xxf
 
 plugins=(git)
 
 # User configuration
-export PATH="/Users/gpespn/.rbenv/shims:/usr/local/bin:/Users/gpespn/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/gpespn/.rbenv/shims:/Users/gpespn/.bin"
+# export PATH='/home/glenn'
 
 source $ZSH/oh-my-zsh.sh
-
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 set nobackup set noswapfile
 set term=xterm-256color
 
 alias c='clear'
 alias tmux='tmux -2'
-alias vim='nvim'
-alias vi='nvim'
+alias vim='vim'
+alias vi='vim'
 alias t='tree'
 
 #########################
@@ -56,11 +52,3 @@ while [ -h "$SOURCE" ]; do
   SOURCE="$(readlink "$SOURCE")"
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
-
-export PATH="$PATH:/usr/X11/bin"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# added by travis gem
-[ -f /Users/gpespn/.travis/travis.sh ] && source /Users/gpespn/.travis/travis.sh
