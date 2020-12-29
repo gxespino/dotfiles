@@ -5,13 +5,9 @@ ZSH_THEME=xxf
 plugins=(git)
 
 # User configuration
-export PATH="/Users/gpespn/.rbenv/shims:/usr/local/bin:/Users/gpespn/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/gpespn/.rbenv/shims:/Users/gpespn/.bin"
+export PATH="$PATH:/usr/X11/bin:/usr/local/bin:/Users/gpespn/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/gpespn/.bin"
 
 source $ZSH/oh-my-zsh.sh
-
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 set nobackup set noswapfile
 set term=xterm-256color
@@ -21,6 +17,7 @@ alias tmux='tmux -2'
 alias vim='nvim'
 alias vi='nvim'
 alias t='tree'
+alias ngrok-sb="~/ngrok http 3000 -subdomain=sidebar"
 
 #########################
 ## Rails
@@ -33,6 +30,8 @@ alias fresh='rake db:drop db:create db:migrate db:seed'
 alias fresht='rake db:drop db:create db:migrate RAILS_ENV=test'
 alias rs='TRUSTED_IP=192.168.33.1 rails s -b 0.0.0.0'
 alias rc='rubocop -Dc .rubocop.yml'
+
+alias zetup='./exe/zetup'
 
 ##########################
 ## CD BACKSLASH SHORTHAND
@@ -57,10 +56,15 @@ while [ -h "$SOURCE" ]; do
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
 
-export PATH="$PATH:/usr/X11/bin"
+# added by travis gem
+[ -f /Users/gpespn/.travis/travis.sh ] && source /Users/gpespn/.travis/travis.sh
+
+export EDITOR="vim"
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+# Rails BS
+export SECRET_KEY_BASE='8e139bf22e19edb4a7ffd7c3ef25cc7317982a7e9b40de785319a6e91e17376d76d98c4d325c3fdd727d684a9673e3f91f229c6b50261dc9935b5bdd98104ee8'
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-# added by travis gem
-[ -f /Users/gpespn/.travis/travis.sh ] && source /Users/gpespn/.travis/travis.sh
